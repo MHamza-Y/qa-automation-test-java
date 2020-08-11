@@ -54,7 +54,7 @@ public class BaseTests {
     public static Iterator<Object[]> getSheetData(Method method) throws IOException {
         String sheetName ;
         String methodName = method.getName();
-        if(methodName.equals("searchMovie") || methodName.equals("fullCastTest")) {
+        if(methodName.equals("searchMovie") || methodName.equals("fullCastTest") || methodName.equals("postFlyerTest")) {
             sheetName = "Input";
         }
         else
@@ -62,6 +62,17 @@ public class BaseTests {
 
 
         List<Map<String,String>> sheetVals = ExcelFile.readSheet("src/test/resources/qaautomation.xlsx",sheetName);
+
+        if (methodName.equals("postFlyerTest")) {
+            List<Map<String,String>> sheetValsExtra = ExcelFile.readSheet("src/test/resources/qaautomation.xlsx","Series Cast");
+            List<Map<String,String>> temp = new ArrayList<>();
+            for(Map<String,String> vals:sheetVals) {
+                vals.put("firstname",sheetValsExtra.get(4).get("Name"));
+                vals.put("lastname",sheetValsExtra.get(4).get("Stage Name"));
+                temp.add(vals);
+            }
+            sheetVals = temp;
+        }
 
         Collection<Object[]> data = new ArrayList<>();
         sheetVals.forEach(item -> data.add(new Object[]{item}));
