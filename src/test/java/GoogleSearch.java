@@ -1,4 +1,5 @@
 import org.testng.Assert;
+import org.testng.ITestContext;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.google.GoogleHomePage;
@@ -24,13 +25,14 @@ public class GoogleSearch extends BaseTests{
      * @param sheet variable containing input sheet data in key value format passed from a data provider
      */
     @Test(dataProvider = "input-sheet")
-    public void searchMovie(Map<String,String> sheet)  {
-        homePage = new GoogleHomePage(BaseTests.getWebDriver());
+    public void searchMovie(Map<String,String> sheet, ITestContext context)  {
+        homePage = new GoogleHomePage(BaseTests.getWebDriver(),BaseTests.getWaitTime());
         homePage.goTo();
         resultPage = homePage.search(sheet.get("Search String 1"));
         String resultLink = searchListForTitleString( resultPage.getResults(),sheet.get("Search String 2"));
 
         Assert.assertNotEquals(resultLink,"");
+        context.setAttribute("movieUrl",resultLink);
 
     }
 
@@ -50,18 +52,6 @@ public class GoogleSearch extends BaseTests{
     }
 
 
-    /**
-     * This function provides input data for the search movie test. The data is read from an excel file sheet.
-     * @return returns an iterator object containing the data of input sheet in Map format
-     * @throws IOException this exception is thrown if unable to read file
-     */
-    @DataProvider (name = "input-sheet")
-    public Iterator<Object[]> getInputs() throws IOException {
-        ExcelFile excelFile = new ExcelFile();
-        List<Map<String,String>> sheetVals = excelFile.readSheet("src/test/resources/qaautomation.xlsx","Input");
 
-        Collection<Object[]> data = new ArrayList<Object[]>();
-        sheetVals.forEach(item -> data.add(new Object[]{item}));
-        return data.iterator();
-    }
+
 }

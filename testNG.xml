@@ -3,6 +3,8 @@
         <classes>
             <class name="GoogleSearch">
             </class>
+            <class name="ImdbFullCastTest">
+            </class>
         </classes>
     </test>
 </suite>
