@@ -16,6 +16,4 @@ This project implements following tests,
 To run the test just clone the project in InteliJ and run testNG.xml
 
 
-!!!important!!!
-
-Change email in input sheet and in REST sheet for registration each run. Excel file is located under: src/test/resources.
+Excel file is located under: src/test/resources.
