@@ -78,6 +78,11 @@ public class BaseTests {
         sheetVals.forEach(item -> data.add(new Object[]{item}));
         return data.iterator();
     }
+
+    /**
+     * get wait time to initialize wait objects
+     * @return wait time in seconds
+     */
     public static int getWaitTime() {
         return waitTime;
     }

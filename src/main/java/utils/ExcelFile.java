@@ -61,6 +61,13 @@ public class ExcelFile {
         }
     }
 
+    /**
+     * This function takes data and writes it to specified sheet on excel file
+     * @param data Data to write to sheet
+     * @param outputFile Path of file to be modified
+     * @param sheetName Name of sheet to be modified
+     * @throws IOException exception is thrown if unable to read/write the file
+     */
     public static void writeToSheet(List<Map<String, String>> data, String outputFile, String sheetName) throws IOException {
         XSSFWorkbook workbook = new XSSFWorkbook(new FileInputStream(outputFile));
         XSSFSheet sheet = workbook.getSheet(sheetName);

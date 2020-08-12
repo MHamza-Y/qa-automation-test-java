@@ -12,6 +12,10 @@ import java.util.Map;
 
 public class EmumbaPostFlyerTest extends BaseTests {
 
+    /**
+     * checks if user after registering and logging in can post flyer successfully
+     * @param sheet input from data provider contains all registration, login and flyer details
+     */
     @Test(dataProvider = "input-sheet")
     public void postFlyerTest(Map<String, String> sheet) {
         EmumbaHomePage homePage = new EmumbaHomePage(BaseTests.getWebDriver(), BaseTests.getWaitTime());
@@ -55,7 +59,7 @@ public class EmumbaPostFlyerTest extends BaseTests {
                 finalFlyerBody,
                 homePage.getLatestPostBody()
         )
-    );
+    );//waits for the latest post to load
 
         //check if post was successful
         Assert.assertEquals(
@@ -70,6 +74,12 @@ public class EmumbaPostFlyerTest extends BaseTests {
         homePage.clickLogoutButton(); //logout of the emumba site
     }
 
+    /**
+     * Checks if latest post is loaded by reloading and comparing latest post text
+     * @param expectedElementText expected value of post element
+     * @param actualElementText current valye of post element
+     * @return returns true if latest post loaded else false
+     */
     private boolean waitForPostLoad(String expectedElementText,String actualElementText) {
         getWebDriver().navigate().refresh();
         return expectedElementText.equals(actualElementText);

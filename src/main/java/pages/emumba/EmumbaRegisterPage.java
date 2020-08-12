@@ -37,6 +37,15 @@ public class EmumbaRegisterPage {
         PageFactory.initElements(driver, this);
     }
 
+    /**
+     * registers a new user
+     * @param firstname first name of the user
+     * @param lastname last name of the user
+     * @param email email address of the user
+     * @param password password of the user
+     * @param confirmPassword confirm password of the user
+     * @return returns login page object
+     */
     public EmumbaLoginPage register(String firstname,String lastname,String email,String password, String confirmPassword) {
         firstNameField.click();
         firstNameField.sendKeys(firstname);

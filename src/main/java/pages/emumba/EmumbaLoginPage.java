@@ -37,12 +37,22 @@ public class EmumbaLoginPage {
         PageFactory.initElements(driver, this);
     }
 
+    /**
+     * clicks on not a user yet link
+     * @return returns registration page object
+     */
     public EmumbaRegisterPage clickNotAUserYet() {
         wait.until(ExpectedConditions.visibilityOf(notAUserYet));
         notAUserYet.click();
         return new EmumbaRegisterPage(driver, waitTime);
     }
 
+    /**
+     * logs in to emumba site
+     * @param email email required for login
+     * @param password password required for login
+     * @return returns home page object
+     */
     public EmumbaHomePage login(String email, String password) {
         wait.until(ExpectedConditions.visibilityOf(notAUserYet));
         emailField.click();

@@ -14,6 +14,11 @@ import java.util.concurrent.TimeUnit;
 import static io.restassured.RestAssured.given;
 
 public class APIsTest extends BaseTests {
+
+    /**
+     * Sends an API request and validates the reponse
+     * @param sheet the sheet containing API request data
+     */
     @Test(dataProvider = "input-sheet")
     public void APIsRequestTest(Map<String, String> sheet) {
         RequestSpecification specification ;
@@ -71,6 +76,12 @@ public class APIsTest extends BaseTests {
         System.out.println(response.asString());
     }
 
+    /**
+     * Checks if response contains expected elements such as email.
+     * @param responseBody received response from API request
+     * @param keysArrayAsString expected  keys in response
+     * @return returns true if response contains expected keys
+     */
     private boolean responseContainsExpectedKeys(String responseBody, String keysArrayAsString) {
         List<String> expectedStrList = StringUtils.parseStringToList(keysArrayAsString);
         for(String item:expectedStrList) {

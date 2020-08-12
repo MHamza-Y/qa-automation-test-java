@@ -36,32 +36,56 @@ public class EmumbaHomePage {
         PageFactory.initElements(driver, this);
     }
 
-
+    /**
+     * clicks login button on home page
+     * @return returns login page object
+     */
     public EmumbaLoginPage clickLoginButton() {
         wait.until(ExpectedConditions.visibilityOf(loginButton));
         loginButton.click();
         return new EmumbaLoginPage(driver,waitTime);
     }
 
+    /**
+     * clicks post flyer button on home page
+     * @return returns post flyer page object
+     */
     public EmumbaPostFlyerPage clickPostFlyerButton() {
         wait.until(ExpectedConditions.visibilityOf(postFlyerButton));
         postFlyerButton.click();
         return new EmumbaPostFlyerPage(driver,waitTime);
     }
 
+    /**
+     * click logout button on home page
+     */
     public void clickLogoutButton() {
         wait.until(ExpectedConditions.visibilityOf(logoutButton));
         logoutButton.click();
     }
 
+    /**
+     * get the latest post title
+     * @return returns string containing title of latest post
+     */
     public String getLatestPostHeading() {
         wait.until(ExpectedConditions.visibilityOf(latestFlyerHead));
         return latestFlyerHead.getAttribute("innerText");
     }
+
+    /**
+     * get the latest post body
+     * @return returns string containing body of latest post
+     */
     public  String getLatestPostBody() {
         wait.until(ExpectedConditions.visibilityOf(latestFlyerBody));
         return latestFlyerBody.getAttribute("innerText");
     }
+
+    /**
+     * get url of home page
+     * @return returns url of home page
+     */
     public String getUrl() {
         return "https://emumba-test.herokuapp.com/";
     }

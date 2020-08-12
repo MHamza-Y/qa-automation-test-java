@@ -46,22 +46,51 @@ public class EmumbaPostFlyerPage {
         this.wait = new WebDriverWait(driver,waitTime);
         PageFactory.initElements(driver, this);
     }
+
+    /**
+     * get rules box title
+     * @return returns rules box title in string format
+     */
     public String getRulesHeading() {
         return rulesBoxHeading.getText();
     }
+
+    /**
+     * get rules box content
+     * @return returns rules box content in string format
+     */
     public String getRulesContent() {
         return rulesBoxContent.getAttribute("innerText");
     }
+
+    /**
+     * clicks on home button
+     * @return returns home page object
+     */
     public EmumbaHomePage clickHomeButton() {
         homeButton.click();
         return new EmumbaHomePage(driver,waitTime);
     }
+
+    /**
+     * enters tags in tag field
+     * @param tags list of tags to enter
+     */
     private void enterTags(List<String> tags) {
         for(String tag:tags) {
             tagField.click();
             tagField.sendKeys(tag, Keys.ENTER);
         }
     }
+
+    /**
+     * posts a new flyer
+     * @param title title of the flyer
+     * @param details details of the flyer
+     * @param phoneNumber phone number for the flyer
+     * @param address adress for the flyer
+     * @param tags tags for the flyer
+     */
     public void postFlyer(String title, String details, String phoneNumber,String address, List<String> tags) {
         titleField.click();
         titleField.sendKeys(title);

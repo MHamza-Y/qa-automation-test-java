@@ -64,4 +64,8 @@ public class GoogleHomePage {
         this.EnterIntoSearchField(searchString);
         return this.clickSearch();
     }
+
+    public boolean checkPageLoaded() {
+        return searchButton.getAttribute("value").equals("Google Search");
+    }
 }

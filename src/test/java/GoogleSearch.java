@@ -28,6 +28,7 @@ public class GoogleSearch extends BaseTests{
     public void searchMovie(Map<String,String> sheet, ITestContext context)  {
         homePage = new GoogleHomePage(BaseTests.getWebDriver(),BaseTests.getWaitTime());
         homePage.goTo();
+        Assert.assertTrue(homePage.checkPageLoaded(),"internet not working");
         resultPage = homePage.search(sheet.get("Search String 1"));
         String resultLink = searchListForTitleString( resultPage.getResults(),sheet.get("Search String 2"));
 
