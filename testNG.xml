@@ -1,7 +1,7 @@
 <suite name = "suite">
     <test name = "Google Search">
         <classes>
-            <class name = "EmumbaPostFlyerTest">
+            <class name = "APIsTest">
             </class>
         </classes>
     </test>

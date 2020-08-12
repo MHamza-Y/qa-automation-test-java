@@ -55,9 +55,11 @@ public class EmumbaHomePage {
     }
 
     public String getLatestPostHeading() {
+        wait.until(ExpectedConditions.visibilityOf(latestFlyerHead));
         return latestFlyerHead.getAttribute("innerText");
     }
     public  String getLatestPostBody() {
+        wait.until(ExpectedConditions.visibilityOf(latestFlyerBody));
         return latestFlyerBody.getAttribute("innerText");
     }
     public String getUrl() {
