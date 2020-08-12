@@ -23,7 +23,7 @@ public class APIsTest extends BaseTests {
     public void APIsRequestTest(Map<String, String> sheet) {
         RequestSpecification specification ;
         Response response = new RestAssuredResponseImpl();
-        String payloadStr = sheet.get("Request Payload (json)");
+        String payloadStr = sheet.get("Request Payload (json)").replace("[@here]",""+Math.random());
         String method = sheet.get("Method");
         String api = sheet.get("API");
 

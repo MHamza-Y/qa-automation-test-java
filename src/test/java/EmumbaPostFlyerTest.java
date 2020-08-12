@@ -26,15 +26,18 @@ public class EmumbaPostFlyerTest extends BaseTests {
         EmumbaLoginPage loginPage = homePage.clickLoginButton(); //go to login page
 
         EmumbaRegisterPage registerPage = loginPage.clickNotAUserYet(); //goto registration page
+        String email =sheet.get("Email").replace("[@here]",""+Math.random());
 
         registerPage.register(
                 sheet.get("firstname"),
                 sheet.get("lastname"),
-                sheet.get("Email"),
+                email,
                 sheet.get("Password"),
                 sheet.get("Password")); //register a new user with data from excel file
 
-        loginPage.login(sheet.get("Email"), sheet.get("Password"));//login the new user
+        loginPage.login(
+                email
+                , sheet.get("Password"));//login the new user
 
         EmumbaPostFlyerPage postFlyerPage = homePage.clickPostFlyerButton();//go to post flyer page
 
