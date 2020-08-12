@@ -24,30 +24,27 @@ public class APIsTest extends BaseTests {
         RequestSpecification specification ;
         Response response = new RestAssuredResponseImpl();
         String payloadStr = sheet.get("Request Payload (json)");
-        String responseStr = sheet.get("Response Contains");
         String method = sheet.get("Method");
         String api = sheet.get("API");
 
         if (payloadStr.equals("N/A")){
             payloadStr = "";
         }
-        if (responseStr.equals("N/A")) {
-            responseStr = "";
-        }
+
 
         specification = given().body(payloadStr).when();
         if (method.equals("GET")) {
-            response = specification.get(api);
+            response = specification.redirects().follow(true).get(api);
 
         } else if (method.equals("POST")) {
             response = specification.post(api);
         }
 
-       /* Assert.assertEquals(
+       Assert.assertEquals(
                 response.statusCode(),
                 Integer.parseInt(sheet.get("Expected Response Code")),
                 "Response status code do not match"
-        ); *///assert status code
+        ); //assert status code
 
         Assert.assertTrue(
                 Integer.parseInt(response.header("Content-Length"))
