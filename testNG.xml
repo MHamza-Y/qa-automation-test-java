@@ -1,7 +1,13 @@
 <suite name = "suite">
     <test name = "Google Search">
         <classes>
+            <class name="GoogleSearch">
+            </class>
+            <class name="ImdbFullCastTest">
+            </class>
             <class name = "APIsTest">
+            </class>
+            <class name="EmumbaPostFlyerTest">
             </class>
         </classes>
     </test>
